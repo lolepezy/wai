@@ -201,9 +201,10 @@ defaultShouldDisplayException se
 --
 -- Since: 3.1.0
 defaultOnException :: Maybe Request -> SomeException -> IO ()
-defaultOnException _ e =
-    when (defaultShouldDisplayException e)
-        $ TIO.hPutStrLn stderr $ T.pack $ show e
+-- defaultOnException _ e = pure ()
+defaultOnException _ _ = pure ()
+    -- when (defaultShouldDisplayException e)
+    --     $ TIO.hPutStrLn stderr $ T.pack $ show e
 
 -- | Sending 400 for bad requests.
 --   Sending 500 for internal server errors.
